@@ -17,15 +17,15 @@ export default function Cart() {
             const formattedPrice = `$${item.price.toFixed(2)}`;
 
             return (
-              <li key={items.id}>
+              <li key={item.id}>
                 <div>
-                  <span>{items.name}</span>
+                  <span>{item.name}</span>
                   <span> ({formattedPrice})</span>
                 </div>
                 <div className="cart-item-actions">
-                  <button onClick={() => updateItem(items.id, -1)}>-</button>
+                  <button onClick={() => updateItem(item.id, -1)}>-</button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => updateItem(items.id, 1)}>+</button>
+                  <button onClick={() => updateItem(item.id, 1)}>+</button>
                 </div>
               </li>
             );
