@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import Header from './components/Header.jsx';
-import Shop from './components/Shop.jsx';
-import { DUMMY_PRODUCTS } from './dummy-products.js';
+import Header from "./components/Header.jsx";
+import Shop from "./components/Shop.jsx";
+import { DUMMY_PRODUCTS } from "./dummy-products.js";
+import Product from "./components/Product.jsx";
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState({
@@ -71,7 +72,16 @@ function App() {
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
       />
-      <Shop onAddItemToCart={handleAddItemToCart} />
+
+      {/* componeent composition is done below  and all data wraped is passed through children prop */}
+      <Shop>
+        {DUMMY_PRODUCTS.map((product) => (
+          <li key={product.id}>
+            <Product {...product} onAddToCart={handleAddItemToCart} />
+          </li>
+        ))}
+      </Shop>
+      {/* componeent composition is above below  and all data wraped is passed through children prop */}
     </>
   );
 }
